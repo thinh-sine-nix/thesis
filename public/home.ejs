@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include('./header.ejs') %>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+    <body>
+        <div class="home">
+            <h2>
+                <img src="/assets/favicon.png" />
+               P2P - VIDEO CALL
+            </h2>
+            <form>
+                <input id="room-id" type="text" placeholder="Enter room name" required />
+                <button id="create-room" class="button-38" type="submit">
+                    <i class="fa-solid fa-circle-plus"></i>
+                    Create Room
+                </button>
+            </form>
+        </div>
+    </body>
+    <script>
+        document.querySelector('#create-room').onclick = async (e) => {
+            const roomID = document.querySelector('#room-id').value;
+            if (!roomID) return;
+            e.preventDefault();
+            const response = await fetch(`/room/${roomID}`, { method: 'POST' });
+            const responseJSON = await response.json();
+            if (response.ok) {
+                window.location.href = `/room/${roomID}?k=${responseJSON.secretKey}`;
+            } else {
+                alert(responseJSON.message);
+            }
+        };
+    </script>
+</html>
