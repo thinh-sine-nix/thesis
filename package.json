@@ -1,5 +1,5 @@
 {
-    "name": "p2p-video-call",
+    "name": "callmate",
     "version": "1.0.0",
     "main": "build/app.js",
     "license": "MIT",
@@ -39,5 +39,8 @@
         "eslint": "^8.48.0",
         "prettier": "^3.0.3",
         "rimraf": "^4.1.1"
+    },
+    "engines": {
+        "node": "18.x"
     }
 }

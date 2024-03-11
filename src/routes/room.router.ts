@@ -5,13 +5,13 @@ type MyRequest = FastifyRequest<{
     Params: { id: string };
     Querystring: {
         name: string;
-        k: string; //secret key
+        k: string;
     };
 }>;
 
 export default function roomRoutes(
-    fastify: FastifyInstance | any,
-    opts: FastifyPluginOptions | any,
+    fastify: FastifyInstance,
+    opts: FastifyPluginOptions,
     done: (err?: Error | undefined) => void
 ) {
     fastify.post('/:id', (req: MyRequest, reply: FastifyReply) => {
