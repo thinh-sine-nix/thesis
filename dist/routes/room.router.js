@@ -6,7 +6,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const rooms_1 = __importDefault(require("../utils/rooms"));
 function roomRoutes(fastify, opts, done) {
     fastify.post('/:id', (req, reply) => {
-        // eslint-disable-next-line @typescript-eslint/no-floating-promises
         reply.send(rooms_1.default.getInstance().new(req.params.id));
     });
     fastify.get('/:id', (req, reply) => {
@@ -15,7 +14,6 @@ function roomRoutes(fastify, opts, done) {
         if (!thisRoom || thisRoom.getSecretKey() !== secretKey) {
             return reply.redirect('/');
         }
-        // eslint-disable-next-line @typescript-eslint/no-floating-promises
         reply.view('call', { roomId: req.params.id });
     });
     done();

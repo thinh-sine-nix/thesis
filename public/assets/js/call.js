@@ -264,4 +264,12 @@ const handleSendMessage = (ws) => {
         e.target.message.value = '';
         ws.send(JSON.stringify({ type: 'message', message }));
     };
+
+    document.querySelector('.chat form button').onclick = (e) => {
+        e.preventDefault();
+        const message = document.querySelector('.chat form input').value?.trim();
+        createMessageSection('You', message);
+        document.querySelector('.chat form input').value = '';
+        ws.send(JSON.stringify({ type: 'message', message }));
+    };
 };
