@@ -276,6 +276,32 @@ function handleSendMessage(ws) {
         document.querySelector('.chat form input').value = '';
         ws.send(JSON.stringify({ type: 'message', message }));
     };
+
+    const cloudName = "hzxyensd5"; //dwfzid0gk
+    const uploadPreset = "aoh4fpwm"; //ml_test
+
+    const myWidget = cloudinary.createUploadWidget(
+    {
+        cloudName: cloudName,
+        uploadPreset: uploadPreset,
+    },
+        (error, result) => {
+            if (!error && result && result.event === "success") {
+                createMessageSection(YOU, "<img src='" + result.info.secure_url + "' alt='upload' width='100px' height='100px' />");
+                myWidget.close();
+                ws.send(JSON.stringify({ type: 'message', message: "<img src='" + result.info.secure_url + "' alt='upload' width='100px' height='100px' />" }));
+            }
+        }
+    );
+
+    document.getElementById("upload_widget").addEventListener(
+        "click",
+        function () {
+          myWidget.open();
+        },
+        false
+      );
+      
 };
 
 document.querySelector('.call .control .copy-link').onclick = () => {

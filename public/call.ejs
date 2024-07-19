@@ -3,6 +3,7 @@
     <head>
         <%- include('./header.ejs') %>
         <link rel="stylesheet" href="/assets/css/video-grid.css" />
+        <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
     </head>
     <body>
         <div class="join">
@@ -48,6 +49,9 @@
                 </div>
                 <div class="chat-content"></div>
                 <form>
+                    <div id="upload_widget" class="cloudinary-button">
+                        <img src="/assets/img/upload.png" width="28px" height="28px" alt="upload"/>
+                    </div>
                     <input type="text" placeholder="Send Message" class="chat-form-input" name="message">
                     <button type="submit" title="send">
                         <img src="/assets/img/send.png" width="28px" height="28px" alt="send"/>
