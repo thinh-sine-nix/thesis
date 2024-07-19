@@ -17,19 +17,22 @@
         <div class="call" style="display: none">
             <div class="Scenary"></div>
             <div class="control">
-                <button class="enable-audio toggle-audio button-38" style="display: none">
+                <button class="copy-link button-38" title="copy share link">
+                    <i class="fa-solid fa-link"></i>
+                </button>
+                <button class="enable-audio toggle-audio button-38" style="display: none" title="turn on microphone">
                     <i class="fa-solid fa-microphone-slash"></i>
                 </button>
-                <button class="disable-audio toggle-audio button-38">
+                <button class="disable-audio toggle-audio button-38" title="turn off microphone">
                     <i class="fa-solid fa-microphone"></i>
                 </button>
-                <button class="toggle-video enable-video button-38" style="display: none">
-                    <img src="/assets/svgs/camera-slash.svg" width="32px" height="32px" alt="camera-off"/>
+                <button class="toggle-video enable-video button-38" style="display: none" title="turn on camera">
+                    <img src="/assets/img/camera-slash.svg" width="32px" height="32px" alt="camera-off"/>
                 </button>
-                <button class="toggle-video disable-video button-38">
+                <button class="toggle-video disable-video button-38" title="turn off camera">
                     <i class="fa-solid fa-camera"></i>
                 </button>
-                <button class="leave-room button-38">
+                <button class="leave-room button-38" title="leave call">
                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
                     Leave
                 </button>
@@ -46,8 +49,8 @@
                 <div class="chat-content"></div>
                 <form>
                     <input type="text" placeholder="Send Message" class="chat-form-input" name="message">
-                    <button type="submit">
-                        <i class="fa-solid fa-paper-plane-top">💌</i>
+                    <button type="submit" title="send">
+                        <img src="/assets/img/send.png" width="28px" height="28px" alt="send"/>
                     </button>
                 </form>
             </div>

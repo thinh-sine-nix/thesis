@@ -199,10 +199,29 @@ body {
     gap: 8px;
 }
 
+.chat .chat-content-message {
+    background: #F0F0F0;
+    border-radius: 0.75rem;
+    padding: 5px 10px;
+    max-width: fit-content;
+}
+
+.chat .chat-content-message.you {
+    text-align: right;
+    margin-left: auto;
+    background: #6CACE4;
+    color: white;
+}
+
 .chat .chat-content-message p,
 span {
     word-wrap: break-word;
-    font-size: 14px;
+    font-size: 10px;
+}
+
+.chat .chat-content-message p {
+    word-wrap: break-word;
+    font-size: 1rem;
 }
 
 .chat .chat-content-message span strong {
@@ -211,7 +230,8 @@ span {
 
 .chat form {
     display: flex;
-    padding: 12px 20px;
+    align-items: center;
+    padding: 8px 12px 8px 20px;
     background: #f0ecec;
     margin: 8px;
     border-radius: 50px;

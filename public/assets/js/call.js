@@ -25,6 +25,8 @@ const room = new Map();
  */
 let name;
 
+const YOU = 'You';
+
 const chatDrawer = document.querySelector('.chat');
 
 let messageSound = new Audio('/assets/audio/message.mp3');
@@ -245,6 +247,8 @@ const createMessageSection = (name, message) => {
         <span><strong>${name}</strong> <span>${getTime()}</span></span>
         <p>${message}</p>
     `;
+    if (name === YOU) messageSection.classList.add('you');
+
     document.querySelector('.chat-content').appendChild(messageSection);
     scrollChatSectionToBottom();
 };
@@ -256,11 +260,11 @@ const isURL = (str) => {
     return str.length < 2083 && url.test(str);
 };
 
-const handleSendMessage = (ws) => {
+function handleSendMessage(ws) {
     document.querySelector('.chat form').onsubmit = (e) => {
         e.preventDefault();
         const message = e.target.message.value?.trim();
-        createMessageSection('You', message);
+        createMessageSection(YOU, message);
         e.target.message.value = '';
         ws.send(JSON.stringify({ type: 'message', message }));
     };
@@ -268,8 +272,17 @@ const handleSendMessage = (ws) => {
     document.querySelector('.chat form button').onclick = (e) => {
         e.preventDefault();
         const message = document.querySelector('.chat form input').value?.trim();
-        createMessageSection('You', message);
+        createMessageSection(YOU, message);
         document.querySelector('.chat form input').value = '';
         ws.send(JSON.stringify({ type: 'message', message }));
     };
 };
+
+document.querySelector('.call .control .copy-link').onclick = () => {
+    const textToCopy = window.location.href;
+    navigator.clipboard.writeText(textToCopy).then(function() {
+        alert('Copied to clipboard');
+    }).catch(function(error) {
+        alert('Failed to copy: ' + error);
+    });
+}
