@@ -12,10 +12,6 @@ COPY . .
 
 COPY tsconfig.json ./
 
-RUN npm run build
-
-RUN ls
-
 EXPOSE 3000
 
-CMD ["npm", "run", "start"]
+CMD ["npm", "run", "dev"]

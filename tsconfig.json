@@ -16,7 +16,6 @@
         "resolveJsonModule": true,
         "sourceMap": false,
         "outDir": "./dist",
-        // "baseUrl": ".",
         "rootDir": ".",
         "skipLibCheck": true,
         "forceConsistentCasingInFileNames": true,

@@ -36,13 +36,13 @@ const server = fastify({ logger: true });
             fastify.get('/ws', { websocket: true }, handleWS(server.log));
         });
 
-        // server.listen({ port: 3000, host: '127.0.0.1' });
-        server.listen({ port: 3000 }, (err, address) => {
+        
+        server.listen({ port: 3000, host: '0.0.0.0' }, (err) => {
             if (err) {
                 console.error(err)
                 process.exit(1)
             }
-            console.log(`Server listening at ${address}`)
+            console.log('Server listening at http://localhost:3000')
         })
     } catch (err) {
         server.log.error(err);
