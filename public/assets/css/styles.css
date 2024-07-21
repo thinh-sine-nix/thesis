@@ -238,10 +238,27 @@ span {
 .chat form {
     display: flex;
     align-items: center;
-    padding: 8px 12px 8px 20px;
+    padding: 8px 12px 8px 10px;
     background: #f0ecec;
     margin: 8px;
     border-radius: 50px;
+    gap: 0.25rem;
+}
+
+.chat form .upload-btn {
+    padding: 3px;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    background: transparent;
+    box-shadow: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chat form .upload-btn:hover {
+    background: #bbe7ff;
 }
 
 .chat form input {

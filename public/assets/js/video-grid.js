@@ -5,7 +5,7 @@ class CameraGrid {
     // default options
     _dish = false;
     _conference = false;
-    _margin = 10;
+    _margin = 2;
     _aspect = 0;
     _video = false;
     _ratio = this.ratio(); // to perfomance call here
