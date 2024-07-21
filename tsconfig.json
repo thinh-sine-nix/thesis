@@ -1,20 +1,30 @@
 {
     "compilerOptions": {
-        "module": "CommonJS",
+        "module": "commonjs",
         "esModuleInterop": true,
-        "target": "ES2020",
+        "target": "es5",
+        "declaration": true,
         "allowJs": true,
         "strictNullChecks": false,
         "noImplicitAny": false,
         "strict": false,
+        "noEmit": true,
+        "noEmitOnError": false,
         "strictFunctionTypes": false,
         "noImplicitThis": false,
         "moduleResolution": "node",
         "resolveJsonModule": true,
-        "sourceMap": true,
+        "sourceMap": false,
         "outDir": "./dist",
-        "baseUrl": ".",
+        // "baseUrl": ".",
+        "rootDir": ".",
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
     },
-    "include": ["src/**/*"],
-    "exclude": ["node_modules"]
+    "include": [
+        "./src/**/*.ts",
+    ],
+    "exclude": [
+        "node_modules",
+    ]
 }

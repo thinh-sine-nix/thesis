@@ -1,1 +1,0 @@
-{"version":3,"file":"wsMessage.js","sourceRoot":"","sources":["../../src/utils/wsMessage.ts"],"names":[],"mappings":";;AAAA,MAAqB,SAAS;IAI1B,8DAA8D;IAC9D,YAAY,IAAY,EAAE,OAAY;QAClC,IAAI,CAAC,IAAI,GAAG,IAAI,CAAC;QACjB,mEAAmE;QACnE,IAAI,CAAC,OAAO,GAAG,OAAO,CAAC;IAC3B,CAAC;CACJ;AAVD,4BAUC"}
