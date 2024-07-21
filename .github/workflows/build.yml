@@ -1,4 +1,4 @@
-name: Build image
+name: Build and Publish
 
 on:
   push:
@@ -11,7 +11,24 @@ on:
       - "!nginx/**"
 
 jobs:
-  publish:
+  lint:
+      runs-on: ubuntu-latest
+      steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18.x'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Lint
+        run: npm run lint
+
+  push:
     runs-on: ubuntu-latest
     permissions:
       packages: write
