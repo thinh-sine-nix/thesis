@@ -263,19 +263,23 @@ const isURL = (str) => {
 function handleSendMessage(ws) {
     document.querySelector('.chat form').onsubmit = (e) => {
         e.preventDefault();
-        const message = e.target.message.value?.trim();
-        createMessageSection(YOU, message);
-        e.target.message.value = '';
-        ws.send(JSON.stringify({ type: 'message', message }));
+        const message = tinyMCE.activeEditor.getContent()
+        if (message !== '') {
+            createMessageSection(YOU, message);
+            ws.send(JSON.stringify({ type: 'message', message }));
+            tinymce.activeEditor.setContent("");
+        }
     };
 
-    document.querySelector('.chat form button').onclick = (e) => {
+    document.querySelector('.chat form .send-btn').onclick = (e) => {
         e.preventDefault();
-        const message = document.querySelector('.chat form input').value?.trim();
-        createMessageSection(YOU, message);
-        document.querySelector('.chat form input').value = '';
-        ws.send(JSON.stringify({ type: 'message', message }));
-    };
+        const message = tinyMCE.activeEditor.getContent()
+        if (message !== '') {
+            createMessageSection(YOU, message);
+            ws.send(JSON.stringify({ type: 'message', message }));
+            tinymce.activeEditor.setContent("");
+        }
+    }
 
     const cloudName = "hzxyensd5"; //dwfzid0gk
     const uploadPreset = "aoh4fpwm"; //ml_test
@@ -295,13 +299,11 @@ function handleSendMessage(ws) {
     );
 
     document.getElementById("upload_widget").addEventListener(
-        "click",
-        function () {
-          myWidget.open();
+        "click", function () {
+            myWidget.open();
         },
         false
-      );
-      
+    );
 };
 
 document.querySelector('.call .control .copy-link').onclick = () => {
@@ -312,3 +314,11 @@ document.querySelector('.call .control .copy-link').onclick = () => {
         alert('Failed to copy: ' + error);
     });
 }
+
+tinymce.init({
+    selector: ".chat-form-input",
+    plugins: "emoticons",
+    toolbar: "emoticons",
+    toolbar_location: "bottom",
+    menubar: false,
+});

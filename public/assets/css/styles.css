@@ -238,17 +238,16 @@ span {
 .chat form {
     display: flex;
     align-items: center;
-    padding: 8px 12px 8px 10px;
-    background: #f0ecec;
+    padding-top: 8px;
+    border-top: 1px solid #f0ecec;
     margin: 8px;
-    border-radius: 50px;
     gap: 0.25rem;
 }
 
 .chat form .upload-btn {
-    padding: 3px;
-    height: 2rem;
-    width: 2rem;
+    padding: 0.25rem;
+    height: 2.5rem;
+    width: 2.5rem;
     border-radius: 50%;
     background: transparent;
     box-shadow: none;
@@ -258,7 +257,7 @@ span {
 }
 
 .chat form .upload-btn:hover {
-    background: #bbe7ff;
+    background: #cfeeff;
 }
 
 .chat form input {
@@ -281,6 +280,10 @@ span {
 
 .chat form button i {
     font-size: 20px;
+}
+
+.chat .send-btn {
+    background: none;
 }
 
 /* width */
@@ -308,4 +311,27 @@ span {
 .disable-video img {
     width: 20px;
     height: 20px;
+}
+
+.tox-statusbar {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden;
+}
+
+.tox, .tox-tinymce, .tox-editor-container {
+    max-height: 50px !important;
+    height: 50px !important;
+    width: 230px !important;
+    position: relative !important;
+    padding: 0 !important;
+}
+
+.tox-editor-header {
+    position: absolute !important;
+    top: 0px !important;
+    right: -24px !important;
+    width: 80px !important;
+    height: 80px !important;
+    overflow: hidden !important;
 }

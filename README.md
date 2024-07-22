@@ -26,6 +26,7 @@ I wanted to create a simple way to connect to peers via internal network without
 - 📹 **Camera sharing**: Share your camera with peers
 - 💬 **Chat**: Chat with peers
 - 🎧 **Audio sharing**: Share audio with peers
+- 📝 **Rich text editor**: Write notes with rich text editor
 
 ## Tech Stack
 
@@ -36,6 +37,7 @@ I wanted to create a simple way to connect to peers via internal network without
 - **FontAwesome**: Icon library
 - **JavaScript/Typescript**: Programming language
 - **HTML/CSS**: Markup and styling language
+- **Tinymce**: Rich text editor
 
 ## How to use
 
@@ -59,3 +61,5 @@ docker-compose up
 ## License
 
 [MIT](LICENSE) © Thuong Truong, 2024
+
+<!-- https://github.com/miqrc/fastify-typescript-docker-rest-api/blob/master/src/controllers/main.service.ts -->
