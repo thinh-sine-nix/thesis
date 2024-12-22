@@ -2,7 +2,6 @@ FROM node:18-alpine
 
 WORKDIR /app
 
-RUN npm install npm@latest -g
 RUN npm install -g typescript
 
 COPY package*.json ./
