@@ -1,5 +1,14 @@
 {
     "name": "shakemate",
+    "description": "🖇️ Connect to temp peers via internal network without authentication",
+    "author": {
+        "name": "Tran Nguyen Thuong Truong",
+        "email": "thuongtruong@proton.me"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/thuongtruong109/shakemate.git"
+    },
     "version": "1.0.0",
     "main": "dist/app.js",
     "license": "MIT",

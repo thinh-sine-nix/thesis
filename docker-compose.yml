@@ -1,13 +1,14 @@
-version: "3.7"
+version: '3.7'
 
 services:
-  app:
-    image: thuongtruong1009/shakemate
-    container_name: shakemate
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "3000:3000"
-    volumes:
-      - .:/app
+    app:
+        image: thuongtruong1009/shakemate
+        container_name: shakemate
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+            - '3000:3000'
+        volumes:
+            - .:/app
+            - /app/node_modules
