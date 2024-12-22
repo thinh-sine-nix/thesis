@@ -9,6 +9,9 @@
         "type": "git",
         "url": "git+https://github.com/thuongtruong109/shakemate.git"
     },
+    "bugs": {
+        "url": "https://github.com/thuongtruong109/shakemate/issues"
+    },
     "version": "1.0.0",
     "main": "dist/app.js",
     "license": "MIT",
@@ -50,6 +53,6 @@
         "typescript": "^5.5.3"
     },
     "engines": {
-        "node": "18.x"
+        "node": ">=20.0.0"
     }
 }

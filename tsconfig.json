@@ -1,29 +1,12 @@
 {
     "compilerOptions": {
+        "target": "es2017",
         "module": "commonjs",
         "esModuleInterop": true,
-        "target": "es5",
-        "declaration": true,
-        "allowJs": true,
-        "strictNullChecks": false,
-        "noImplicitAny": false,
-        "strict": false,
-        "noEmit": true,
-        "noEmitOnError": false,
-        "strictFunctionTypes": false,
-        "noImplicitThis": false,
-        "moduleResolution": "node",
-        "resolveJsonModule": true,
-        "sourceMap": false,
-        "outDir": "./dist",
-        "rootDir": ".",
-        "skipLibCheck": true,
         "forceConsistentCasingInFileNames": true,
-    },
-    "include": [
-        "./src/**/*.ts",
-    ],
-    "exclude": [
-        "node_modules",
-    ]
+        "strict": true,
+        "skipLibCheck": true,
+        "rootDir": "./src",
+        "outDir": "./dist"
+    }
 }

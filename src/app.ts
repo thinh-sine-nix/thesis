@@ -12,7 +12,7 @@ import handleWS from './utils/handleWebsocket';
 dotenv.config();
 
 const server = fastify({ logger: true });
-const PORT = +Number.parseInt(process.env.PORT) || 3000;
+const PORT = process.env.PORT ? +Number.parseInt(process.env.PORT) : 3000;
 
 (async () => {
     try {
