@@ -12,13 +12,12 @@ import handleWS from './utils/handleWebsocket';
 dotenv.config();
 
 const server = fastify({ logger: true });
-const PORT = process.env.PORT ? +Number.parseInt(process.env.PORT) : 3000;
+const PORT = process.env.PORT ? +Number.parseInt(process.env.PORT) : 3002;
 
 (async () => {
     try {
         startCron();
 
-        //serve static
         await server.register(FastifyStatic, {
             root: path.resolve('./public'),
         });
@@ -32,7 +31,6 @@ const PORT = process.env.PORT ? +Number.parseInt(process.env.PORT) : 3000;
 
         server.register(routes);
 
-        //websocket
         server.register(ws);
         server.register(async function (fastify) {
             fastify.get('/ws', { websocket: true }, handleWS(server.log));

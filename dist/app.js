@@ -48,11 +48,10 @@ const cron_1 = __importDefault(require("./utils/cron"));
 const handleWebsocket_1 = __importDefault(require("./utils/handleWebsocket"));
 dotenv.config();
 const server = (0, fastify_1.fastify)({ logger: true });
-const PORT = process.env.PORT ? +Number.parseInt(process.env.PORT) : 3000;
+const PORT = process.env.PORT ? +Number.parseInt(process.env.PORT) : 3002;
 (async () => {
     try {
         (0, cron_1.default)();
-        //serve static
         await server.register(static_1.default, {
             root: path_1.default.resolve('./public'),
         });
@@ -63,7 +62,6 @@ const PORT = process.env.PORT ? +Number.parseInt(process.env.PORT) : 3000;
             root: 'public',
         });
         server.register(routes_1.default);
-        //websocket
         server.register(websocket_1.default);
         server.register(async function (fastify) {
             fastify.get('/ws', { websocket: true }, (0, handleWebsocket_1.default)(server.log));

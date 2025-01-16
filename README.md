@@ -10,9 +10,9 @@
 
 ## 🎫 Preview
 
-![Preview](/public/preview.png)
+![Preview](/public/demo_1.png)
 
-![Preview 2](/public/preview_2.png)
+![Preview 2](/public/demo_2.png)
 
 ## 🔥 Motivation
 
@@ -20,28 +20,31 @@ I wanted to create a simple way to connect to peers via internal network without
 
 ## 🪶 Features
 
--   📦 **Zero-config**: No need to configure anything, just run the server and connect to it
--   🌐 **Internal network**: Connect to the server via internal network
--   🚀 **Fast**: No authentication required, just connect and start sharing
--   📱 **Responsive**: Works on all devices
--   📡 **Real-time**: Uses WebRTC for real-time communication
--   📁 **File sharing**: Share files with peers
--   📹 **Camera sharing**: Share your camera with peers
--   💬 **Chat**: Chat with peers
--   🎧 **Audio sharing**: Share audio with peers
--   📝 **Rich text editor**: Write notes with rich text editor
+- 📦 **Zero-config**: No need to configure anything, just run the server and connect to it
+- 🌐 **Internal network**: Connect to the server via internal network
+- 🚀 **Fast**: No authentication required, just connect and start sharing
+- 📱 **Responsive**: Works on all devices
+- 📡 **Real-time**: Uses WebRTC for real-time communication
+- 📁 **File sharing**: Share files with peers
+- 📹 **Camera sharing**: Share your camera with peers
+- 💬 **Chat**: Chat with peers
+- 🎧 **Audio sharing**: Share audio with peers
+- 📝 **Rich text editor**: Write notes with rich text editor
+- 📲 **PWA**: Progressive Web App for offline usage
+- 📈 **Insight**: SEO friendly
 
 ## 🏗️ Tech Stack
 
--   **Fastify x ejs**: Web framework for Node.js with EJS template engine
--   **Socket.io**: Real-time communication library
--   **Peerjs**: Simple peer-to-peer with WebRTC
--   **Docker**: Containerization platform
--   **FontAwesome**: Icon library
--   **JavaScript/Typescript**: Programming language
--   **HTML/CSS**: Markup and styling language
--   **Tinymce**: Rich text editor
--   **Cloudinary**: Image hosting service
+- 🧊 [**Fastify**](https://fastify.dev/) x [**EJS**](https://ejs.co/): Web framework for Node.js with EJS template engine
+- 💻 [**WebRTC**](https://webrtc.org/): Real-time communication library
+- ⌚ [**Socket.io**](https://socket.io/): Real-time communication library
+- 🕸️ [**Peerjs**](https://peerjs.com/): Simple peer-to-peer with WebRTC
+- 🐳 [**Docker**](https://www.docker.com/): Containerization platform for easy deployment
+- 🍧 [**FontAwesome**](https://fontawesome.com/): Icon library for web
+- 💥 [**JavaScript**](https://developer.mozilla.org/en-US/docs/Web/JavaScript)/[**Typescript**](https://www.typescriptlang.org/): Programming language for main logic
+- 🚩 [**HTML**](https://developer.mozilla.org/en-US/docs/Web/HTML)/[**CSS**](https://developer.mozilla.org/en-US/docs/Web/CSS): HyperText-Markup and Cascading-Style-Sheet language
+- ✍️ [**Tinymce**](https://www.tiny.cloud/tinymce/): Rich text embeded editor
+- ☁️ [**Cloudinary**](https://cloudinary.com/): Image hosting service
 
 ## 🔨 How to use
 
