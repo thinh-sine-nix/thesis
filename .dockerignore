@@ -1,8 +1,0 @@
-.github
-.eslintrc.js
-.gitignore
-.prettierrc
-README.md
-Dockerfile
-docker-compose.yml
-node_modules

@@ -8,7 +8,7 @@ class CameraGrid {
     _margin = 2;
     _aspect = 0;
     _video = false;
-    _ratio = this.ratio(); // to perfomance call here
+    _ratio = this.ratio(); // to performance call here
 
     // create dish
     constructor(scenary) {
@@ -19,6 +19,21 @@ class CameraGrid {
         this.create();
 
         return this;
+    }
+
+    addScreenShareStream(peerId, stream) {
+        const videoElement = document.createElement('video');
+        videoElement.srcObject = stream;
+        videoElement.autoplay = true;
+        videoElement.classList.add('screen-share');
+        document.querySelector('.Scenary').appendChild(videoElement);
+    }
+
+    removeScreenShareStream(peerId) {
+        const screenShareElement = document.querySelector(`.screen-share[data-peer-id="${peerId}"]`);
+        if (screenShareElement) {
+            screenShareElement.remove();
+        }
     }
 
     // create Dish
@@ -44,8 +59,8 @@ class CameraGrid {
 
     // resizer of cameras
     resizer(width) {
-        for (var s = 0; s < this._dish.children.length; s++) {
-            // camera fron dish (div without class)
+        for (let s = 0; s < this._dish.children.length; s++) {
+            // camera from dish (div without class)
             let element = this._dish.children[s];
 
             // custom margin
@@ -86,7 +101,7 @@ class CameraGrid {
         return ratio[1] / ratio[0];
     }
 
-    // calculate area of dish:
+    // calculate area of dish
     area(increment) {
         let i = 0;
         let w = 0;
@@ -124,7 +139,12 @@ class CameraGrid {
         cameraContainer.appendChild(camera);
         cameraContainer.id = id;
 
-        //status (microphone, camera)
+
+        camera.style.transform = 'scaleX(-1)';
+
+
+
+        // status (microphone, camera)
         cameraContainer.appendChild(this.getStatusBar());
 
         this._dish.appendChild(cameraContainer);
@@ -134,36 +154,28 @@ class CameraGrid {
     getStatusBar() {
         const statusBar = document.createElement('section');
         const microphoneIcon = document.createElement('i');
-        microphoneIcon.classList.add('fa-solid');
-        microphoneIcon.classList.add('fa-microphone-slash');
+        microphoneIcon.classList.add('fa-solid', 'fa-microphone-slash');
         microphoneIcon.style.display = 'none';
         statusBar.appendChild(microphoneIcon);
+
         const cameraIcon = document.createElement('i');
-        cameraIcon.classList.add('fa-solid');
-        cameraIcon.classList.add('fa-camera-slash');
+        cameraIcon.classList.add('fa-solid', 'fa-camera-slash');
         cameraIcon.style.display = 'none';
         statusBar.appendChild(cameraIcon);
+
         return statusBar;
     }
 
     toggleMicrophoneIcon(id, status) {
         const microphoneIcon = document.querySelector(`#${id} > section .fa-microphone-slash`);
         if (!microphoneIcon) return;
-        if (status) {
-            microphoneIcon.style.display = 'none';
-        } else {
-            microphoneIcon.style.display = 'flex';
-        }
+        microphoneIcon.style.display = status ? 'none' : 'flex';
     }
 
     toggleCameraIcon(id, status) {
         const cameraIcon = document.querySelector(`#${id} > section .fa-camera-slash`);
         if (!cameraIcon) return;
-        if (status) {
-            cameraIcon.style.display = 'none';
-        } else {
-            cameraIcon.style.display = 'flex';
-        }
+        cameraIcon.style.display = status ? 'none' : 'flex';
     }
 
     removeCamera(id) {

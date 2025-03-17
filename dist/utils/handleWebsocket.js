@@ -10,9 +10,8 @@ const user_1 = require("./user");
 const wsClients_1 = __importDefault(require("./wsClients"));
 function handleWS(log) {
     return function (connection, request) {
-        var _a;
-        const { peerId, roomId, name } = request.query;
-        //add to client cache & room
+        var _a, _b;
+        const { peerId, roomId, name } = request.query; //add to client cache & room
         const newUser = new user_1.User(peerId, name, connection.socket);
         wsClients_1.default.getInstance().add(peerId, newUser);
         const beforeUpdateRoomData = [
@@ -20,6 +19,10 @@ function handleWS(log) {
         ];
         rooms_1.default.getInstance().add(roomId, newUser);
         connection.socket.send(JSON.stringify(new wsMessage_1.default('join_room', beforeUpdateRoomData)));
+        connection.socket.send(JSON.stringify(new wsMessage_1.default('join_room', {
+            members: beforeUpdateRoomData,
+            startTime: (_b = rooms_1.default.getInstance().get(roomId)) === null || _b === void 0 ? void 0 : _b.getStartTime() // Send room start time
+        })));
         connection.socket.on('message', (messageRaw) => {
             var _a, _b, _c, _d, _e;
             // eslint-disable-next-line @typescript-eslint/no-base-to-string
@@ -40,16 +43,25 @@ function handleWS(log) {
                     (_e = rooms_1.default.getInstance()
                         .get(roomId)) === null || _e === void 0 ? void 0 : _e.boardcast(new wsMessage_1.default('message', { peerId, value: message }));
                     break;
-                default: return;
+                default:
+                    return;
             }
         });
         connection.socket.on('close', () => {
-            var _a, _b;
-            //remove client cache & delete from room
             try {
-                (_a = rooms_1.default.getInstance().get(roomId)) === null || _a === void 0 ? void 0 : _a.removeMember(peerId);
-                wsClients_1.default.getInstance().delete(peerId);
-                (_b = rooms_1.default.getInstance().get(roomId)) === null || _b === void 0 ? void 0 : _b.boardcast(new wsMessage_1.default('disconnect', peerId));
+                const room = rooms_1.default.getInstance().get(roomId);
+                if (room) {
+                    room.removeMember(peerId);
+                    wsClients_1.default.getInstance().delete(peerId);
+                    room.boardcast(new wsMessage_1.default('disconnect', peerId));
+                    if (room.getMember().length === 0) {
+                        rooms_1.default.getInstance().delete(roomId);
+                        log.info({
+                            type: 'room_deleted',
+                            msg: `Room ${roomId} is deleted because no members left`,
+                        });
+                    }
+                }
             }
             catch (err) {
                 let message = 'Unknown Error';

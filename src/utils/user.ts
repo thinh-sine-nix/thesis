@@ -1,6 +1,10 @@
 import { WebSocket } from 'ws';
 
 export class User {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    setScreenShare(_arg0: boolean) {
+        throw new Error('Method not implemented.');
+    }
     public name: string;
     public peerId: string;
     public readonly socket: WebSocket;

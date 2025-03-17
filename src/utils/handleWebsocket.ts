@@ -11,8 +11,7 @@ type MyRequest = FastifyRequest<{
 
 export default function handleWS(log: FastifyBaseLogger) {
     return function (connection: SocketStream, request: MyRequest) {
-        const { peerId, roomId, name } = request.query;
-        //add to client cache & room
+        const { peerId, roomId, name } = request.query; //add to client cache & room
         const newUser = new User(peerId, name, connection.socket);
         WsClients.getInstance().add(peerId, newUser);
         const beforeUpdateRoomData = [
@@ -21,6 +20,12 @@ export default function handleWS(log: FastifyBaseLogger) {
         Rooms.getInstance().add(roomId, newUser);
 
         connection.socket.send(JSON.stringify(new WSMessage('join_room', beforeUpdateRoomData)));
+        
+        connection.socket.send(JSON.stringify(new WSMessage('join_room', {
+            members: beforeUpdateRoomData,
+            startTime: Rooms.getInstance().get(roomId)?.getStartTime() // Send room start time
+        })));
+        
 
         connection.socket.on('message', (messageRaw) => {
             // eslint-disable-next-line @typescript-eslint/no-base-to-string
@@ -44,16 +49,26 @@ export default function handleWS(log: FastifyBaseLogger) {
                         .get(roomId)
                         ?.boardcast(new WSMessage('message', { peerId, value: message }));
                     break;
-                default: return;
+                default:
+                    return;
             }
         });
 
         connection.socket.on('close', () => {
-            //remove client cache & delete from room
             try {
-                Rooms.getInstance().get(roomId)?.removeMember(peerId);
-                WsClients.getInstance().delete(peerId);
-                Rooms.getInstance().get(roomId)?.boardcast(new WSMessage('disconnect', peerId));
+                const room = Rooms.getInstance().get(roomId);
+                if (room) {
+                    room.removeMember(peerId);
+                    WsClients.getInstance().delete(peerId);
+                    room.boardcast(new WSMessage('disconnect', peerId));
+                    if (room.getMember().length === 0) {
+                        Rooms.getInstance().delete(roomId);
+                        log.info({
+                            type: 'room_deleted',
+                            msg: `Room ${roomId} is deleted because no members left`,
+                        });
+                    }
+                }
             } catch (err) {
                 let message = 'Unknown Error';
                 if (err instanceof Error) message = err.message;

@@ -1,17 +1,5 @@
 {
     "name": "shakemate",
-    "description": "🖇️ Connect to temp peers via internal network without authentication",
-    "author": {
-        "name": "Tran Nguyen Thuong Truong",
-        "email": "thuongtruong@proton.me"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/thuongtruong109/shakemate.git"
-    },
-    "bugs": {
-        "url": "https://github.com/thuongtruong109/shakemate/issues"
-    },
     "version": "1.0.0",
     "main": "dist/app.js",
     "license": "MIT",
@@ -24,16 +12,21 @@
         "lint:fix": "eslint src/**/*.ts --fix"
     },
     "dependencies": {
+        "@fastify/cookie": "^8.3.0",
         "@fastify/express": "^2.3.0",
+        "@fastify/session": "^11.1.0",
         "@fastify/static": "^6.6.0",
         "@fastify/view": "^7.3.0",
         "@fastify/websocket": "^7.1.1",
+        "bcrypt": "^5.1.1",
         "dotenv": "^16.0.3",
         "ejs": "^3.1.8",
+        "fabric": "^6.5.3",
+        "jsonwebtoken": "^9.0.2",
         "node-cron": "^3.0.2",
         "peer": "^0.6.1",
         "peerjs": "^1.4.7",
-        "uuid": "^9.0.0"
+        "uuid": "^9.0.1"
     },
     "devDependencies": {
         "@types/dotenv": "^8.2.0",
@@ -53,6 +46,6 @@
         "typescript": "^5.5.3"
     },
     "engines": {
-        "node": ">=20.0.0"
+        "node": "18.x"
     }
 }

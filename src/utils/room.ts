@@ -8,17 +8,29 @@ export class Room {
     private secretKey: string;
     private updatedAt: Date;
     private createdAt: Date;
-
-    constructor(id: string) {
+    private startTime: Date | null = null;
+    private password: string;  // Store room password
+    
+    constructor(id: string, password: string) {
         this.member = [];
         this.secretKey = uuidv4();
         this.id = id;
         this.updatedAt = new Date();
+        this.password = password;
         this.createdAt = new Date();
+        this.startTime = null;
     }
 
     public getId() {
         return this.id;
+    }
+
+    public getPassword() {
+        return this.password;
+    }
+
+    public checkPassword(password: string) {
+        return this.password === password;
     }
 
     public getSecretKey() {
@@ -36,7 +48,14 @@ export class Room {
 
     public addMember(user: User) {
         this.updatedAt = new Date();
+        if (!this.startTime) {
+            this.startTime = new Date(); // Set start time when first person enters
+        }
         return this.member.push(user);
+    }
+
+    public getStartTime() {
+        return this.startTime;
     }
 
     public removeMember(id: string) {

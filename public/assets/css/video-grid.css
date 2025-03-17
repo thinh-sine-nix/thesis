@@ -23,7 +23,175 @@
     flex-direction: column;
     padding: 1rem;
     gap: 1rem;
+    margin: 10px;
 }
+
+
+.call-timer .fw-bold {
+    font-size: 0.8rem;
+}
+
+@media (max-width: 600px) {
+    .call-timer {
+        display: none;
+    }
+}
+
+
+
+/* Adjustments for small screens */
+@media (max-width: 480px) {
+    .call-timer {
+        bottom: 10px; /* Move it higher on small screens */
+        left: 10px;  /* Move it towards the edge */
+        padding: 8px 14px;  /* Smaller padding for mobile */
+        font-size: 14px;  /* Smaller font size */
+        border-radius: 6px;  /* Smaller border radius */
+        max-width: 85%; /* Prevent overflow */
+    }
+}
+
+/* Adjustments for tablets */
+@media (max-width: 768px) {
+    .call-timer {
+        bottom: 15px;  /* Adjust bottom distance */
+        left: 15px;  /* Adjust left distance */
+        padding: 10px 18px;  /* Slightly reduced padding */
+        font-size: 15px;  /* Slightly smaller font size */
+        border-radius: 7px;  /* Slightly rounded corners */
+        max-width: 90%; /* Keep within bounds */
+    }
+}
+
+/* For larger screens, the original styling will apply */
+@media (min-width: 769px) {
+    .call-timer {
+        bottom: 20px;
+        left: 20px;
+        padding: 12px 20px;
+        font-size: 16px;
+        border-radius: 8px;
+    }
+}
+
+
+/* Custom styling for button */
+#whiteboard-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 16px; 
+    font-size: 14px;
+    font-weight: 500; 
+    border-radius: 6px; 
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s ease;
+    width: auto; 
+    margin: 4px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#whiteboard-btn:hover {
+    background-color: #45a049;
+    transform: translateY(-2px); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+#whiteboard-btn:active {
+    background-color: #3d8c40;
+    transform: translateY(0); 
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+
+.room-id-container {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    flex-direction: column; /* Mặc định là xếp dọc */
+    gap: 10px; /* Khoảng cách giữa các phần tử */
+    z-index: 1000;
+    align-items: flex-start; /* Căn lề trái */
+}
+
+/* Style chung cho cả Room ID và Call Duration */
+.room-id-container .box {
+    background: black;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 160px; /* Đảm bảo chiều dài bằng nhau */
+}
+
+#timer {
+    display: inline-block; /* Cho phép margin-top hoạt động */
+    margin-top: 3px;
+}
+
+#room-id {
+    font-size: 1em; /* Tăng cỡ chữ lên 20% */
+    font-weight: bold; /* Làm đậm hơn nếu cần */
+
+}
+
+
+.room-id-container .box span {
+    font-weight: 600; /* Giảm độ đậm */
+    margin-left: 5px; /* Tạo khoảng cách giữa ':' và nội dung */
+    font-size: 0.9em; /* Nhỏ hơn 10% so với phần trước ':' */
+    display: flex;
+    align-items: center; /* Đảm bảo căn giữa theo chiều dọc */
+}
+
+
+/* Responsive: Khi màn hình nhỏ, xếp ngang */
+@media (max-width: 768px) {
+    .room-id-container {
+        flex-direction: row; /* Chuyển thành hàng ngang */
+    }
+}
+
+
+
+/* --- Responsive Design --- */
+
+/* 📱 Small screens (mobile) */
+@media (max-width: 480px) {
+    .room-id-display {
+        top: 10px; /* Reduce top margin */
+        left: 10px; /* Reduce left margin */
+        font-size: 14px; /* Decrease font size */
+        padding: 8px 16px; /* Reduce padding */
+        border-radius: 6px; /* Reduce border radius */
+    }
+
+    .room-id-display span {
+        font-size: 16px; /* Decrease room ID text size */
+    }
+}
+
+/* 📺 Medium screens (tablets, iPads) */
+@media (max-width: 768px) {
+    .room-id-display {
+        top: 15px; /* Adjust top position */
+        left: 15px; /* Adjust left position */
+        font-size: 15px; /* Slightly smaller font size */
+        padding: 9px 18px; /* Adjust padding */
+        border-radius: 7px; /* Adjust border radius */
+    }
+
+    .room-id-display span {
+        font-size: 17px; /* Adjust room ID text size */
+    }
+}
+
 
 /* Container of Screen and Dish */
 .Conference {
@@ -134,4 +302,33 @@
         opacity: 1;
         transform: scale(1) translateY(0);
     }
+}
+
+
+.image-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
 }

@@ -5,10 +5,10 @@ class Rooms {
     constructor() {
         this.roomsData = new Map();
     }
-    new(roomID) {
+    new(roomID, password) {
         if (this.roomsData.has(roomID))
-            throw new Error('This room is exists');
-        const newRoom = new room_1.Room(roomID);
+            throw new Error('This room already exists');
+        const newRoom = new room_1.Room(roomID, password); // Create room with password
         this.roomsData.set(roomID, newRoom);
         return newRoom;
     }
@@ -18,7 +18,7 @@ class Rooms {
     add(roomID, user) {
         var _a;
         if (!this.roomsData.has(roomID))
-            throw new Error('This room is not exists');
+            throw new Error('This room does not exist');
         return (_a = this.roomsData.get(roomID)) === null || _a === void 0 ? void 0 : _a.addMember(user);
     }
     get(roomID) {
@@ -26,7 +26,7 @@ class Rooms {
     }
     delete(roomID) {
         if (!this.roomsData.has(roomID))
-            throw new Error('This room is not exists');
+            throw new Error('This room does not exist');
         return this.roomsData.delete(roomID);
     }
     static getInstance() {

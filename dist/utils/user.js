@@ -2,6 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.User = void 0;
 class User {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    setScreenShare(_arg0) {
+        throw new Error('Method not implemented.');
+    }
     constructor(peerId, name, socket) {
         this.name = name;
         this.peerId = peerId;

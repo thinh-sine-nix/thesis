@@ -14,15 +14,24 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Room = void 0;
 const uuid_1 = require("uuid");
 class Room {
-    constructor(id) {
+    constructor(id, password) {
+        this.startTime = null;
         this.member = [];
         this.secretKey = (0, uuid_1.v4)();
         this.id = id;
         this.updatedAt = new Date();
+        this.password = password;
         this.createdAt = new Date();
+        this.startTime = null;
     }
     getId() {
         return this.id;
+    }
+    getPassword() {
+        return this.password;
+    }
+    checkPassword(password) {
+        return this.password === password;
     }
     getSecretKey() {
         return this.secretKey;
@@ -39,7 +48,13 @@ class Room {
     }
     addMember(user) {
         this.updatedAt = new Date();
+        if (!this.startTime) {
+            this.startTime = new Date(); // Set start time when first person enters
+        }
         return this.member.push(user);
+    }
+    getStartTime() {
+        return this.startTime;
     }
     removeMember(id) {
         this.updatedAt = new Date();
